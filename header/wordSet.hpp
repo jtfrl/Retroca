@@ -1,3 +1,6 @@
+#ifndef WORD_SET
+#define WORD_SET
+
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -57,15 +60,39 @@ class Def{
 //herda de Def e de Word
 class WordDef : public Def, public Word{
     private:
-    std::map<Word, Def> wd;
+    std::map<Word, int> wd;
 
-    WordDef(std::map<Word, Def> WD): wd(WD){
-        //definir palavras e definição aqui
+     WordDef(std::map<Word, int> WD, std::string newdef, 
+        int dsize, int defChoice, std::string neword, int s): Def(newdef, dsize, 
+            defChoice), Word(neword, s), wd(WD){
+
+        for(const auto& pair: WD){
+            if(pair.second>6||pair.second<0){
+                throw std::invalid_argument("Escolha precisa ser um inteiro entre 1 e 5\n");
+            }
+        }
     }
 
     public:
 
+    void choiceFromUser(int c){
+        switch(c){
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            //vai fazer a operação de ur na definição para cada palavra
+        }
+    }
+
+    
+
+
+
 
 };
+
+#endif //WORD_SET
 
 
