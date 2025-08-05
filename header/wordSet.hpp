@@ -12,10 +12,11 @@ class Word{
         std::string w;
         int size;
 
-        Word(std::string word, int s): w(word), size(s){
+        Word(std::string word): w(word){
             if(word.length()==0||word.length()>6){
                 throw std::invalid_argument("Tamanho da palavra deve ser entre 1 e 6");
             }
+            size=word.length();
         }
 
     public:
@@ -37,9 +38,7 @@ class Def{
         int size;
         int choice;
 
-        //Def(std::string d, int s);
-
-        Def(std::string d, int s, int c): def(d), size(s), choice(c){
+        Def(std::string d, int c): def(d), choice(c){
             if(def.length()==0||def.length()>50){
                 throw std::invalid_argument("Descrição precisa ter, no máximo, 50 caracteres");
             }
@@ -62,11 +61,6 @@ class Def{
             return choice;
         }
 
-        //bool checkWord()
-        //f. para ver se a palavra está certa
-
-
-
 };
 
 
@@ -75,10 +69,13 @@ class WordDef : public Def, public Word{
     private:
     std::map<Word, int> wd;
 
-     WordDef(std::map<Word, int> WD, std::string newdef, 
-        int dsize, int defChoice, std::string neword, int s): Def(newdef, dsize, 
-            defChoice), Word(neword, s), wd(WD){
+    
 
+    public:
+
+    WordDef() = default;
+
+    WordDef(std::map<Word, int> WD, std::string neword, Word(newword)){
         for(const auto& pair: WD){
             if(pair.second>6||pair.second<0){
                 throw std::invalid_argument("Escolha precisa ser um inteiro entre 1 e 5\n");
@@ -86,12 +83,14 @@ class WordDef : public Def, public Word{
         }
     }
 
-    public:
+    void add(const std::string&word, int id){
+        wd[word]=id;
+    }
 
     void choiceFromUser(int c){
         switch(c){
-            case 1:{
-                //std::cout
+            case 1:{ 
+                //em wd, teríamos 1 em int
             }
             case 2:{
 
@@ -116,9 +115,12 @@ class WordDef : public Def, public Word{
 
 class Star{
     public: 
+
+
     void seeStars(){
+        std::cout<<"RETROCA"<<std::endl;
         for(int i=0;i<5;i++){
-            std::cout<<"* * * * *"<<std::endl;
+            std::cout<<(i+1)+". * * * * *"<<std::endl;
         }
         //deve haver condicionais para exibir os * de acordo com as posições
     }

@@ -2,6 +2,17 @@
 
 
 
+WordDef w1["COMPRA"]=1;
+WordDef w2["COMERA"]=2;
+
+/*VERIFICANDO COMO DEFINIR
+WordDef w1.at("COMPRA")=1;
+WordDef w2.at("COMERA")=2;
+WordDef w3.at("COMETA")=3;
+WordDef w4<"COLETA", 4>;
+WordDef w5<"ROLETA", 5>;
+*/
+
 
 //mais aqui:https://gist.github.com/thecoreyford/e23783941df423906655e658f9dfc50d
 //ÚTIL PARA VER COMO FAZER O LAÇO
@@ -24,3 +35,10 @@
         }
         std::cout << std::endl;
 */
+bool checkWord(){
+
+}
+
+while(true){
+   
+}
