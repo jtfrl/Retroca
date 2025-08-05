@@ -1,7 +1,10 @@
 #include "wordSet.hpp"
 
 int main(){
-    int countTrial=0;
+    int countTrialforRightAns=0;//cada resposta certa é contabilizada
     
+    while(countTrialforRightAns<5){
+        //impl
+    }
     return 0;
 }

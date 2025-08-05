@@ -35,13 +35,17 @@ class Def{
     protected:
         std::string def;
         int size;
+        int choice;
 
         //Def(std::string d, int s);
 
-        Def(std::string d, int s): def(d), size(s){
+        Def(std::string d, int s, int c): def(d), size(s), choice(c){
             if(def.length()==0||def.length()>50){
                 throw std::invalid_argument("Descrição precisa ter, no máximo, 50 caracteres");
             }
+
+            std::pair<std::string, int> defpair;
+            //ver como atribuir: escolha e definição
         }
 
     public:
@@ -53,6 +57,15 @@ class Def{
         int size(){
             return size;
         }
+
+        int seeChoice(){
+            return choice;
+        }
+
+        //bool checkWord()
+        //f. para ver se a palavra está certa
+
+
 
 };
 
@@ -77,20 +90,38 @@ class WordDef : public Def, public Word{
 
     void choiceFromUser(int c){
         switch(c){
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            //vai fazer a operação de ur na definição para cada palavra
+            case 1:{
+                //std::cout
+            }
+            case 2:{
+
+            }
+            case 3:{
+
+            }
+            case 4:{
+
+            }
+            case 5:{
+
+            }
+            //implementar default
         }
     }
 
-    
 
 
+};
 
 
+class Star{
+    public: 
+    void seeStars(){
+        for(int i=0;i<5;i++){
+            std::cout<<"* * * * *"<<std::endl;
+        }
+        //deve haver condicionais para exibir os * de acordo com as posições
+    }
 };
 
 #endif //WORD_SET
