@@ -16,7 +16,6 @@ class Word{
             if(word.length()==0||word.length()>6){
                 throw std::invalid_argument("Tamanho da palavra deve ser entre 1 e 6");
             }
-            size=word.length();
         }
 
     public:
@@ -26,6 +25,7 @@ class Word{
         }
 
         int size(){
+            size=w.length();
             return size;
         }
 
@@ -38,22 +38,29 @@ class Def{
         int size;
         int choice;
 
-        Def(std::string d, int c): def(d), choice(c){
+    public:
+
+       Def() = default;
+
+       Def(std::string d, int c): def(d), choice(c){
             if(def.length()==0||def.length()>50){
                 throw std::invalid_argument("Descrição precisa ter, no máximo, 50 caracteres");
             }
 
-            std::pair<std::string, int> defpair;
+            if(choice<0||choice>6){
+                throw std::invalid_argument("Número da def. precisa ser inteiro e estar entre 1 e 5");       
+            }
+
+            //std::pair<std::string, int> defpair;
             //ver como atribuir: escolha e definição
         }
-
-    public:
 
         std::string seeDef(){
             return def;
         }
 
         int size(){
+            size=def.length();
             return size;
         }
 
@@ -67,17 +74,16 @@ class Def{
 //herda de Def e de Word
 class WordDef : public Def, public Word{
     private:
-    std::map<Word, int> wd;
-
-    
+    std::map<Word, Def> wd;
 
     public:
 
     WordDef() = default;
 
-    WordDef(std::map<Word, int> WD, std::string neword, Word(newword)){
+    WordDef(std::map<Word, Def>WD, std::string neword, std::string newdef, int c: 
+        Word(newword), Def(newdef, c){
         for(const auto& pair: WD){
-            if(pair.second>6||pair.second<0){
+            if(pair.second.c>6||pair.second.c<0){
                 throw std::invalid_argument("Escolha precisa ser um inteiro entre 1 e 5\n");
             }
         }
