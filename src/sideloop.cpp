@@ -2,8 +2,11 @@
 
 
 
-WordDef w1["COMPRA"]=1;
-WordDef w2["COMERA"]=2;
+//WordDef w1;
+//WordDef w2;
+//w1["COMPRA"]=1;
+
+std::map<Word, int> w1={"COMPRA",1};
 
 /*VERIFICANDO COMO DEFINIR
 WordDef w1.at("COMPRA")=1;
