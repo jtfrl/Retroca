@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include <algorithm>
 #include <map>
 #include <stdexcept>
@@ -32,13 +33,26 @@ class Word{
             return size;
         }
 
+        std::vector<std::string> correctLetter(std::vector<std::string> etl, 
+            std::map<Word, int> w){
+            //função que vai servir para trocar a cadeia de * pela 
+            //letra certa correspondente
+
+            //'etl' é uma ref para 'estrelas'.
+            
+
+            //laço que vai iterar entras as letras de >>>uma<<<
+            //das palavras de w 
+            //for(int i=0; i<)
+        }
+
+
 
 };
 
 class Def{
     protected:
         std::string def;
-        int size;
         int choice;
 
     public:
@@ -58,17 +72,20 @@ class Def{
             //ver como atribuir: escolha e definição
         }
 
-        std::string seeDef(){
+        std::string seeDef() const {
             return def;
         }
 
-        int size(){
-            size=def.length();
-            return size;
+        size_t size() const {
+            return def.length();
         }
 
-        int seeChoice(){
+        int seeChoice() const {
             return choice;
+        }
+
+        void setDef(std::string d){
+            def=d;
         }
 
 };
@@ -83,9 +100,13 @@ class WordDef : public Def, public Word{
 
     WordDef() = default;
 
-    WordDef(std::map<Word, int> WD, const Word& word, int choice): 
-    wd(std::move(WD)) {
-       wd[word]=choice;
+    WordDef(std::map<Word, int> WD): wd(std::move(WD)) {
+       //wd[word]=choice;
+    }
+
+    WordDef& operator=(std::pair<const std::string*, int> p){
+        wd.emplace(p.first, p.second);
+        return *this;
     }
 
     void choiceFromUser(int c){
@@ -116,14 +137,26 @@ class WordDef : public Def, public Word{
 
 class Star{
     public: 
-
+    
+    std::vector<std::string> estrelas={"*","*","*","*","*","*"};
+    bool allStarsChange=false;
 
     void seeStars(){
         std::cout<<"RETROCA"<<std::endl;
         for(int i=0;i<5;i++){
-            std::cout<<(i+1)+". * * * * *"<<std::endl;
+            std::cout<<(i+1)+". * * * * * *"<<std::endl;
         }
         //deve haver condicionais para exibir os * de acordo com as posições
+    }
+
+    std::string changeStars(int c){
+        //função para mudar em alguma das palavras 
+        //os * pela(s) letra(s) correspondente(s)
+
+        if(!allStarsChange){
+          //impl  
+        //controlador para ver se todas as estralas mudam
+        }
     }
 };
 
