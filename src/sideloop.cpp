@@ -6,10 +6,7 @@
 //WordDef w2;
 //w1["COMPRA"]=1;
 
-std::map<Word, int> w1={{"COMPRA", 1}, 
-{"COMERA", 2}, 
-{"COMETA", 3},
-};
+std::map<Word, int> w1={{Word("COMPRA"), 1}};
 //std::map<Word, int> allwords={{"COMPRA"}, 1,};
 
 /*VERIFICANDO COMO DEFINIR

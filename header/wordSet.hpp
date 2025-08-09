@@ -16,11 +16,14 @@ class Word{
 
         Word() = default;
 
+        
         Word(std::string word): w(word){
-            if(word.length()==0||word.length()>6){
+         if(word.length()==0||word.length()>6){
                 throw std::invalid_argument("Tamanho da palavra deve ser entre 1 e 6");
-            }
+            }          
         }
+        //Word(const char* word): Word(std::string (word)){} 
+        //acima: alternativa para fazer a atribuição funcionar  
 
     public:
 
