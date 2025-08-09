@@ -49,8 +49,6 @@ class Word{
             //for(int i=0; i<)
         }
 
-
-
 };
 
 class Def{
@@ -93,7 +91,6 @@ class Def{
 
 };
 
-
 //herda de Def e de Word
 class WordDef : public Def, public Word{
     private:
@@ -133,8 +130,6 @@ class WordDef : public Def, public Word{
         }
     }
 
-
-
 };
 
 
@@ -144,12 +139,28 @@ class Star{
     std::vector<std::string> estrelas={"*","*","*","*","*","*"};
     bool allStarsChange=false;
 
+
+    //vetor de strings deve aparecer como parâmetro?
+    //daí podemos saber se o loop 1 aparece ou o 2
     void seeStars(){
-        std::cout<<"RETROCA"<<std::endl;
-        for(int i=0;i<5;i++){
-            std::cout<<(i+1)+". * * * * * *"<<std::endl;
+           std::cout<<"\tRETROCA"<<std::endl;
+
+        if(allStarsChange==false){
+            for(int i=0;i<5;i++){
+                int index=i+1;
+                std::cout<<index<<". * * * * * *"<<std::endl;
+            }
+
         }
-        //deve haver condicionais para exibir os * de acordo com as posições
+
+        else{
+            //laço de acordo com changestars
+
+        }
+
+    //deve haver condicionais para exibir os * de acordo com as posições
+
+        
     }
 
     std::string changeStars(int c){
