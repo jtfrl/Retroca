@@ -89,6 +89,12 @@ class Def{
             def=d;
         }
 
+        //função para ordenação em map
+        bool operator<(const Def& v) const{
+            return this->choice<v.choice;
+        }
+
+
 };
 
 //herda de Def e de Word
@@ -98,16 +104,21 @@ class WordDef : public Def, public Word{
 
     public:
 
-    WordDef() = default;
+    //WordDef() = default;
 
-    WordDef(std::map<Word, int> WD): wd(std::move(WD)) {
+    WordDef(std::map<Word, int> WD): Word(), wd(std::move(WD)) {
        //wd[word]=choice;
     }
+
+    /*
 
     WordDef& operator=(std::pair<const std::string*, int> p){
         wd.emplace(p.first, p.second);
         return *this;
     }
+
+    */
+        
 
     void choiceFromUser(int c){
         switch(c){
