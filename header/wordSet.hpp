@@ -18,7 +18,7 @@ class Word{
 
         
         Word(std::string word): w(word){
-         if(word.length()==0||word.length()>6){
+         if(w.length()==0||w.length()>6){
                 throw std::invalid_argument("Tamanho da palavra deve ser entre 1 e 6");
             }          
         }
@@ -47,6 +47,11 @@ class Word{
             //laço que vai iterar entras as letras de >>>uma<<<
             //das palavras de w 
             //for(int i=0; i<)
+        }
+
+        
+        bool operator<(const Word& v) const{
+            return this->w<v.w;
         }
 
 };
@@ -89,12 +94,7 @@ class Def{
             def=d;
         }
 
-        //função para ordenação em map
-        bool operator<(const Def& v) const{
-            return this->choice<v.choice;
-        }
-
-
+       
 };
 
 //herda de Def e de Word
@@ -154,7 +154,7 @@ class Star{
     //vetor de strings deve aparecer como parâmetro?
     //daí podemos saber se o loop 1 aparece ou o 2
     void seeStars(){
-           std::cout<<"\tRETROCA"<<std::endl;
+        std::cout<<"\tRETROCA"<<std::endl;
 
         if(allStarsChange==false){
             for(int i=0;i<5;i++){
@@ -163,15 +163,11 @@ class Star{
             }
 
         }
-
         else{
             //laço de acordo com changestars
 
         }
-
-    //deve haver condicionais para exibir os * de acordo com as posições
-
-        
+    //deve haver condicionais para exibir os * de acordo com as posições        
     }
 
     std::string changeStars(int c){
@@ -186,5 +182,3 @@ class Star{
 };
 
 #endif //WORD_SET
-
-

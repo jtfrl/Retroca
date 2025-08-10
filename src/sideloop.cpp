@@ -6,8 +6,10 @@
 //WordDef w2;
 //w1["COMPRA"]=1;
 
-std::map<Word, int> w1={{"COMPRA", 1}};
+std::map<Word, int> w1={{Word("COMPRA"), 1}};
 //std::map<Word, int> allwords={{"COMPRA"}, 1,};
+
+WordDef g1(w1); 
 
 /*VERIFICANDO COMO DEFINIR
 WordDef w1.at("COMPRA")=1;
@@ -70,8 +72,8 @@ void print_map(std::string_view comment, const std::map<std::string, int>& m)
 */
 
 
-
-
+//laço para o jogo
+/*
 bool checkWord(){
 
 }
@@ -79,3 +81,5 @@ bool checkWord(){
 while(true){
    
 }
+
+*/
