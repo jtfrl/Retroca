@@ -16,16 +16,20 @@ class Word{
 
         Word() = default;
 
-        
-        Word(std::string word): w(word){
+    public:
+
+   //os construtores devem ser públicos, para serem usados em sideloop.cpp 
+       Word(std::string word): w(word){
          if(w.length()==0||w.length()>6){
                 throw std::invalid_argument("Tamanho da palavra deve ser entre 1 e 6");
             }          
         }
-        //Word(const char* word): Word(std::string (word)){} 
-        //acima: alternativa para fazer a atribuição funcionar  
+        
+        Word(const char* word): Word(std::string (word)){
+          
+        } 
 
-    public:
+    //outros métodos
 
         std::string seeWord(){
             return w;
@@ -37,7 +41,7 @@ class Word{
         }
 
         std::vector<std::string> correctLetter(std::vector<std::string> etl, 
-            std::map<Word, int> w){
+            std::map<Word, int> w, std::string v){}
             //função que vai servir para trocar a cadeia de * pela 
             //letra certa correspondente
 
@@ -47,8 +51,7 @@ class Word{
             //laço que vai iterar entras as letras de >>>uma<<<
             //das palavras de w 
             //for(int i=0; i<)
-        }
-
+        
         
         bool operator<(const Word& v) const{
             return this->w<v.w;
@@ -109,15 +112,6 @@ class WordDef : public Def, public Word{
     WordDef(std::map<Word, int> WD): Word(), wd(std::move(WD)) {
        //wd[word]=choice;
     }
-
-    /*
-
-    WordDef& operator=(std::pair<const std::string*, int> p){
-        wd.emplace(p.first, p.second);
-        return *this;
-    }
-
-    */
         
 
     void choiceFromUser(int c){

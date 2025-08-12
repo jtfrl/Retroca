@@ -1,29 +1,23 @@
 #include "wordSet.hpp"
 
 
+std::map<Word, int> allWords={{"COMPRA", 1}, {"COMERA", 2}, {"COMETA", 3}, 
+{"COLETA", 4}, {"ROLETA", 5}};
 
-//WordDef w1;
-//WordDef w2;
-//w1["COMPRA"]=1;
+//função com laço para retornar o vetor com todos os caracteres corretos 
+//ou o vetor inteiro com todas as letras, se tudo certo
+std::vector<std::string> Word::correctLetter(std::vector<std::string> etl, 
+std::map<Word, int> w, std::string v){
+    if(v<0||v>6){
+        throw std::invalid_argument("Valor inválido para a escolha.\n");
+    }
+    std::string answerInMap=w.at(v); //prob em acessar valor
 
-std::map<Word, int> w1={{Word("COMPRA"), 1}};
-//std::map<Word, int> allwords={{"COMPRA"}, 1,};
+    //v aqui seria um valor que corresponde a palavra no mapa das respostas
 
-WordDef g1(w1); 
-
-/*VERIFICANDO COMO DEFINIR
-WordDef w1.at("COMPRA")=1;
-WordDef w2.at("COMERA")=2;
-WordDef w3.at("COMETA")=3;
-WordDef w4<"COLETA", 4>;
-WordDef w5<"ROLETA", 5>;
-*/
-
-
-
-
+    //for(int i=0; i<)
+}
 /* ##### OUTROS CÓDIGOS QUE PODEM AJUDAR ##### */ 
-
 
 
 //mais aqui:https://gist.github.com/thecoreyford/e23783941df423906655e658f9dfc50d
