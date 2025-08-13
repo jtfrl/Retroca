@@ -1,24 +1,31 @@
 #include "wordSet.hpp"
 
 
-std::map<Word, int> allWords={{"COMPRA", 1}, {"COMERA", 2}, {"COMETA", 3}, 
-{"COLETA", 4}, {"ROLETA", 5}};
+std::map<int, Word> allWords={{1, "COMPRA"}, {2,"COMERA"}, {3,"COMETA"}, 
+{4, "COLETA"}, {5,"ROLETA"}};
 
 //função com laço para retornar o vetor com todos os caracteres corretos 
 //ou o vetor inteiro com todas as letras, se tudo certo
 std::vector<std::string> Word::correctLetter(std::vector<std::string> etl, 
-std::map<Word, int> w, std::string v){
-    if(v<0||v>6){
+std::map<int, Word> w, int v){
+
+    //std::map<Word, int>::iterator it
+
+    if(v<1||v>5){
         throw std::invalid_argument("Valor inválido para a escolha.\n");
     }
-    std::string answerInMap=w.at(v); //prob em acessar valor
 
-    //v aqui seria um valor que corresponde a palavra no mapa das respostas
+    Word answerInMap=w.at(v);
 
-    //for(int i=0; i<)
+
+    for(int i=0; i<answerInMap.size(); i++){
+        //reorganizar função: acho que não é bom ter 'etl' no argumento...
+    }
 }
 /* ##### OUTROS CÓDIGOS QUE PODEM AJUDAR ##### */ 
 
+//mais sobre maps:
+//https://medium.com/@chittaranjansethi/a-comprehensive-guide-to-std-map-in-c-with-code-examples-f5cd576669f1
 
 //mais aqui:https://gist.github.com/thecoreyford/e23783941df423906655e658f9dfc50d
 //ÚTIL PARA VER COMO FAZER O LAÇO

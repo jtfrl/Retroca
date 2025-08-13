@@ -27,7 +27,7 @@ class Word{
         
         Word(const char* word): Word(std::string (word)){
           
-        } 
+        } //?? deveria ser um único aqui
 
     //outros métodos
 
@@ -41,7 +41,7 @@ class Word{
         }
 
         std::vector<std::string> correctLetter(std::vector<std::string> etl, 
-            std::map<Word, int> w, std::string v){}
+            std::map<int, Word> w, int v){}
             //função que vai servir para trocar a cadeia de * pela 
             //letra certa correspondente
 
@@ -103,13 +103,13 @@ class Def{
 //herda de Def e de Word
 class WordDef : public Def, public Word{
     private:
-    std::map<Word, int> wd;
+    std::map<int, Word> wd;
 
     public:
 
     //WordDef() = default;
 
-    WordDef(std::map<Word, int> WD): Word(), wd(std::move(WD)) {
+    WordDef(std::map<int, Word> WD): Word(), wd(std::move(WD)) {
        //wd[word]=choice;
     }
         
