@@ -8,6 +8,8 @@
 #include <map>
 #include <stdexcept>
 #include <utility>
+#include <stack>
+
 
 class Word{
     protected:
@@ -40,18 +42,10 @@ class Word{
             return size;
         }
 
-        std::vector<std::string> correctLetter(std::vector<std::string> etl, 
+        std::stack<int> correctLetter(std::string p, 
             std::map<int, Word> w, int v){}
             //função que vai servir para trocar a cadeia de * pela 
-            //letra certa correspondente
-
-            //'etl' é uma ref para 'estrelas'.
-            
-
-            //laço que vai iterar entras as letras de >>>uma<<<
-            //das palavras de w 
-            //for(int i=0; i<)
-        
+            //letra certa correspondente           
         
         bool operator<(const Word& v) const{
             return this->w<v.w;
@@ -114,7 +108,7 @@ class WordDef : public Def, public Word{
     }
         
 
-    void choiceFromUser(int c){
+    bool choiceFromUser(int c){
         switch(c){
             case 1:{ 
                 //em wd, teríamos 1 em int
@@ -132,6 +126,7 @@ class WordDef : public Def, public Word{
 
             }
             //implementar default
+            //retorno é se a palavra foi correta ou não 
         }
     }
 
@@ -144,10 +139,10 @@ class Star{
     std::vector<std::string> estrelas={"*","*","*","*","*","*"};
     bool allStarsChange=false;
 
-
+    Star() = default;
     //vetor de strings deve aparecer como parâmetro?
     //daí podemos saber se o loop 1 aparece ou o 2
-    void seeStars(){
+    void seeStars(){  //possível usar static aqui, mas seria necessário mexer com allStarsChange
         std::cout<<"\tRETROCA"<<std::endl;
 
         if(allStarsChange==false){
@@ -167,6 +162,8 @@ class Star{
     std::string changeStars(int c){
         //função para mudar em alguma das palavras 
         //os * pela(s) letra(s) correspondente(s)
+
+        //vai usar a pilha 'etl'
 
         if(!allStarsChange){
           //impl  

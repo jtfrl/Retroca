@@ -4,6 +4,9 @@ int main(){
     int countTrialforRightAns=0;//cada resposta certa é contabilizada
     
     while(countTrialforRightAns<5){
+          Star gameOn;
+          gameOn.seeStars();
+
 
 
         std::cout<<"Insira a palavra que você que é a correta (você pode colocar trecho também): "<<std::endl;
@@ -15,5 +18,8 @@ int main(){
         countTrialforRightAns++;
 
     }
+
+  
+
     return 0;
 }

@@ -5,23 +5,33 @@ std::map<int, Word> allWords={{1, "COMPRA"}, {2,"COMERA"}, {3,"COMETA"},
 {4, "COLETA"}, {5,"ROLETA"}};
 
 //função com laço para retornar o vetor com todos os caracteres corretos 
-//ou o vetor inteiro com todas as letras, se tudo certo
-std::vector<std::string> Word::correctLetter(std::vector<std::string> etl, 
-std::map<int, Word> w, int v){
+//p é a palavra indicada pelo usuário para uma das dicas
+std::stack<int> Word::correctLetter(std::string p, std::map<int, Word> w, int v){
 
-    //std::map<Word, int>::iterator it
+    std::stack<int> etl;
 
     if(v<1||v>5){
         throw std::invalid_argument("Valor inválido para a escolha.\n");
     }
 
     Word answerInMap=w.at(v);
-
+    std::string ansItself=answerInMap.w;
 
     for(int i=0; i<answerInMap.size(); i++){
-        //reorganizar função: acho que não é bom ter 'etl' no argumento...
+        for(char s:p){
+            if(s==ansItself[i]){
+                etl.push(1);
+                //necessário apontar cada letra correspondente aqui
+            }else{
+                etl.push(0);
+            }
+        }
     }
+
+    return etl;
 }
+
+
 /* ##### OUTROS CÓDIGOS QUE PODEM AJUDAR ##### */ 
 
 //mais sobre maps:
