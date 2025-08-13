@@ -42,7 +42,7 @@ class Word{
             return size;
         }
 
-        std::stack<int> correctLetter(std::string p, 
+        std::stack<char> correctLetter(std::string p, 
             std::map<int, Word> w, int v){}
             //função que vai servir para trocar a cadeia de * pela 
             //letra certa correspondente           
@@ -163,7 +163,7 @@ class Star{
         //função para mudar em alguma das palavras 
         //os * pela(s) letra(s) correspondente(s)
 
-        //vai usar a pilha 'etl'
+        //vai usar a pilha de tipo char 'etl'
 
         if(!allStarsChange){
           //impl  

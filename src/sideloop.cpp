@@ -6,9 +6,9 @@ std::map<int, Word> allWords={{1, "COMPRA"}, {2,"COMERA"}, {3,"COMETA"},
 
 //função com laço para retornar o vetor com todos os caracteres corretos 
 //p é a palavra indicada pelo usuário para uma das dicas
-std::stack<int> Word::correctLetter(std::string p, std::map<int, Word> w, int v){
+std::stack<char> Word::correctLetter(std::string p, std::map<int, Word> w, int v){
 
-    std::stack<int> etl;
+    std::stack<char> etl;
 
     if(v<1||v>5){
         throw std::invalid_argument("Valor inválido para a escolha.\n");
@@ -20,10 +20,10 @@ std::stack<int> Word::correctLetter(std::string p, std::map<int, Word> w, int v)
     for(int i=0; i<answerInMap.size(); i++){
         for(char s:p){
             if(s==ansItself[i]){
-                etl.push(1);
+                etl.push(s);
                 //necessário apontar cada letra correspondente aqui
             }else{
-                etl.push(0);
+                etl.push('*');
             }
         }
     }
