@@ -31,8 +31,6 @@ class Word{
           
         } //?? deveria ser um único aqui
 
-    //outros métodos
-
         std::string seeWord(){
             return w;
         }
@@ -111,22 +109,24 @@ class WordDef : public Def, public Word{
     bool choiceFromUser(int c){
         switch(c){
             case 1:{ 
-                //em wd, teríamos 1 em int
+               Def dica1("Uma volta na feira", 1);
             }
             case 2:{
+               Def dica2("Futuro do verbo comer", 2);
 
             }
             case 3:{
+               Def dica3("Fenômeno observável no céu", 3);
 
             }
             case 4:{
+                Def dica4("Processo comum em laboratórios de saúde", 4);
 
             }
             case 5:{
+                Def dica5("Objeto comum em programas de auditório", 5);
 
             }
-            //implementar default
-            //retorno é se a palavra foi correta ou não 
         }
     }
 
@@ -138,6 +138,7 @@ class Star{
     
     std::vector<std::string> estrelas={"*","*","*","*","*","*"};
     bool allStarsChange=false;
+    bool someStarsChange=false;
 
     Star() = default;
     //vetor de strings deve aparecer como parâmetro?
@@ -159,11 +160,22 @@ class Star{
     //deve haver condicionais para exibir os * de acordo com as posições        
     }
 
-    std::string changeStars(int c){
-        //função para mudar em alguma das palavras 
-        //os * pela(s) letra(s) correspondente(s)
+    std::string changeStars(std::stack<char> etl){
+        int count=0; //aqui o count vai contar se todos mudam;
+        //for(int j=0;j<etl.size();j++){
+        while(!etl.empty()){  
+            char atualChar=etl.top();
+            if(atualChar!='*'){
+                someStarsChange=true;
+                count++;
+            }
+            etl.pop();
+        }
+        if(count==6) allStarsChange=true;
 
-        //vai usar a pilha de tipo char 'etl'
+
+        //checar código do changeStars com o uso de uma 
+        //variável para resultado
 
         if(!allStarsChange){
           //impl  
