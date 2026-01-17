@@ -98,6 +98,8 @@ class WordDef : public Def, public Word{
 
     //getDef  
         
+
+    /* // >>> em ajuste <<<
     bool choiceFromUser(int c){
         switch(c){
             case 1:{ 
@@ -117,6 +119,7 @@ class WordDef : public Def, public Word{
             }
         }
     }
+    */
 
     bool checkPal(const std::string& _w){ //previne mudanças na palavra escolhida pelo usuário
         return _w==w;
@@ -151,10 +154,11 @@ class Star{
             if(estrelas.size()>5) estrelas.resize(5); // reajuste no tamanho
         }
 
-    void seeStars(){  // possível usar static aqui, mas seria necessário mexer com allStarsChange
+     // words_fromUser é um misto de letras e *, ou só letras, a depender do acerto do usuário    
+    void seeStars(const std::vector<std::string>& word_fromUser) const { 
         std::cout<<"\tRETROCA"<<std::endl;
 
-        if(allStarsChange==false){
+        if(allStarsChange==false){ // controle para checar se as estrelas mudam
             for(int i=0;i<5;i++){
                 int index=i+1;
                 std::cout<<index<<". * * * * * *"<<std::endl;
@@ -162,21 +166,27 @@ class Star{
 
         }
         else{
-            for(int i=0; i<5; i++){
+            for(size_t i=0; i<5; i++){
                 int index=i+1;
-                // pilha sendo usada aqui
-
-                // condicional aqui: se o caractere estiver certo, coloca a letra
-                // senão, usa-se *
-                std::cout<<index<<". "; 
+                std::cout<<index<<". "<<word_fromUser[i]<<std::endl;
+                /*
+                */
+                //std::cout<<index<<". "; 
             }
 
         }
-    //deve haver condicionais para exibir os * de acordo com as posições        
+    // deve haver condicionais para exibir os * de acordo com as posições        
     }
 
-    std::string changeStars(std::stack<char> etl){
+    std::string changeStars(std::stack<char> etl, int idx){ // idx 
         int count=0; //aqui o count vai contar se todos mudam;
+       if(idx<0 || idx>=etl.size()){
+        throw std::out_of_range("Tamanho inválido para o vetor de palavras");
+       }
+
+       std::string& atual_etl=etl[idx];
+
+       /* ABORDAGEM DE PILHA ANTERIOR
         while(!etl.empty()){  
             char atualChar=etl.top();
             if(atualChar!='*'){
@@ -194,6 +204,7 @@ class Star{
           //impl  
         //controlador para ver se todas as estralas mudam
         }
+        */
     }
 };
 
