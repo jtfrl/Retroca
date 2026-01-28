@@ -14,4 +14,4 @@ class WordGame{
     public:
 };
 
-#endif WGAME
+#endif //WGAME
