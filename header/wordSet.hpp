@@ -181,31 +181,88 @@ class Star{
     std::string changeStars(std::stack<char> etl, int idx){ // idx 
         int count=0; //aqui o count vai contar se todos mudam;
        if(idx<0 || idx>=etl.size()){
-        throw std::out_of_range("Tamanho inválido para o vetor de palavras");
+        throw std::out_of_range("Tamanho inválido para o vetor de palavras \n - | - Invalid word index \n");
        }
+       /*
+       // como o acesso aleatório de uma stack não é possível
+       // vamos alocar os dados da pilha em um outro container 
+       // o tempContainer terá as estrelas atuais que restam
+       
+       */
+      std::vector<char> tempContainer; // container temporário que vai tomar os dados da stack
 
-       std::string& atual_etl=etl[idx];
-
-       /* ABORDAGEM DE PILHA ANTERIOR
-        while(!etl.empty()){  
-            char atualChar=etl.top();
-            if(atualChar!='*'){
-                someStarsChange=true;
-                count++;
-            }
+        while(!etl.empty()){
+            tempContainer.push_back(etl.top()); // toma a letra que está no topo
             etl.pop();
         }
-        if(count==6) allStarsChange=true;
 
-        //checar código do changeStars com o uso de uma 
-        //variável para resultado
+        if(idx<tempContainer.size()) char c=tempContainer[idx];
 
-        if(!allStarsChange){
-          //impl  
-        //controlador para ver se todas as estralas mudam
-        }
-        */
+       std::stack<char> tempStack=etl;
+
+       // Atualização das * com as letras correspondentes
+       size_t pos=0;
+       
+       while(!tempStack.empty() && pos<tempContainer.size()){
+            char w=tempStack.top();
+            tempStack.pop();
+            // Atualiza se for uma letra:
+            if(w!='*') tempContainer[pos]=w;
+            pos++;
+       }
+
+       checkStarsIfRev(idx);
+       updateAllStars();
+
     }
+       
+    // É importante que as próximas funções sejam apenas de leitura
+    // por isso, o uso de 'const'; também não são capazes de chamar quaisquer função não-constante
+
+    // Permite checar alguma palavra específica se foi revelada ou não
+    bool check_word(int wordIdx) const{
+        if(wordIdx<0 || wordIdx>=pos_rev.size()) return false;
+        return pos_rev[wordIdx];
+    }
+
+    bool are_all_words_rev() const{
+        return allStarsChange;
+    }
+
+    std::string WordState(int idx) const{
+        if(idx<0 || idx>=estrelas.size()){
+            throw std::out_of_range("Tamanho inválido para o vetor de palavras \n - | - Invalid word index \n");
+            return "";
+        }
+
+        return estrelas[idx];
+    }
+
+    //∟▼∟▼∟▼∟▼∟▼∟▼∟▼∟▼∟▼∟▼∟▼∟▼∟▼∟▼∟▼∟▼∟▼∟▼∟▼∟▼∟▼∟▼∟▼∟▼//
+
+    private:
+    void checkStarsIfRev(int idx){
+        if(idx<0 || idx>estrelas.size()) return;
+
+        const std::string& stars=estrelas[idx];
+
+         // até o fim da string ocorre verificação de *
+        pos_rev[idx]=(stars.find('*')==std::string::npos);
+    }
+
+    void updateAllStars(){
+        someStarsChange=true;
+        int count=0;
+        for(bool r:pos_rev){
+            if(!r){
+                someStarsChange=true;
+            }
+            count++;
+        }
+
+        if(count==6) allStarsChange=true;
+    }
+    
 };
 
 #endif //WORD_SET
