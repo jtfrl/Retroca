@@ -1,6 +1,7 @@
 #ifndef WGAME
 #define WGAME
 #include "wordSet.hpp"
+#include <memory>
 
 class WordGame{
     private:
